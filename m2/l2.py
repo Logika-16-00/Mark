@@ -1,1 +1,1 @@
-cvbnm,.dfghjk
+print("hello world!")
