@@ -1,4 +1,4 @@
-from app import *
+from memorycard.app import *
 App = QApplication([])
 
 
