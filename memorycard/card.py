@@ -1,11 +1,7 @@
-from memorycard.app import *
-App = QApplication([])
+from app import *
+from PyQt5.QtWidgets import QPushButton, QSpinBox, QRadioButton, QLabel, QButtonGroup, QVBoxLayout,QHBoxLayout, QGroupBox, QWidget
+from PyQt5.QtCore import Qt
 
-
-win_card = QWidget([])
-win_card.resize(600,500)
-win_card.setWindowTitle("Memory Card")
-win_card.move(0,0)
 
 btn_sleep = QPushButton("Відпочити")
 box_minutes = QSpinBox()
@@ -31,9 +27,10 @@ RadioGroup.addButton(btn_ans3)
 RadioGroup.addButton(btn_ans4)
 
 layout1 = QHBoxLayout()
-layout1.addWidget(btn_menu, aligment=Qt.AlignmentLeft)
-layout1.addWidget(btn_sleep, alignment=Qt.AlignmentRight)
-layout1.addWidget(box_minutes, alignment= Qt.AlignmentRight)
+layout1.addWidget(btn_menu, alignment= Qt.AlignRight)
+layout1.addStretch(3)
+layout1.addWidget(btn_sleep, alignment=Qt.AlignRight)
+layout1.addWidget(box_minutes, alignment= Qt.AlignRight)
 
 
 line_btn_ans1 = QVBoxLayout()
@@ -54,7 +51,3 @@ main_line.addLayout(layout1)
 main_line.addWidget(lb_ans)
 main_line.addWidget(AnswersGroupBox)
 main_line.addWidget(btn_ans)
-win_card.setLayout(main_line)
-
-win_card.show()
-App.exec_()
