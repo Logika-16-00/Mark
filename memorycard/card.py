@@ -50,4 +50,21 @@ main_line = QVBoxLayout()
 main_line.addLayout(layout1)
 main_line.addWidget(lb_ans)
 main_line.addWidget(AnswersGroupBox)
+
+ResGroupBox = QGroupBox("Результат:")
+lb_res = QLabel("Правильність")
+lb_correct = QLabel("Правильна відповідь")
+line_res = QVBoxLayout()
+line_res.addWidget(lb_res)
+line_res.addWidget(lb_correct)
+ResGroupBox.setLayout(line_res)
+main_line.addWidget(ResGroupBox)
 main_line.addWidget(btn_ans)
+
+ResGroupBox.hide()
+def show_res():
+    if btn_ans.text() == "Відповісти":
+        AnswersGroupBox.hide()
+        ResGroupBox.show()
+        btn_ans.setText("Наступне запитання")
+btn_ans.clicked.connect(show_res)
