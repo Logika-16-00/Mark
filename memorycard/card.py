@@ -65,20 +65,3 @@ main_line.addWidget(ResGroupBox)
 main_line.addWidget(btn_ans)
 
 ResGroupBox.hide()
-def show_res():
-    if btn_ans.text() == "Відповісти":
-        AnswersGroupBox.hide()
-        ResGroupBox.show()
-        btn_ans.setText("Наступне запитання")
-        
-def show_ans():
-    AnswersGroupBox.show()
-    ResGroupBox.hide()
-    btn_ans.setText('Відповісти')
-    RadioGroup.setExclusive(False)
-    btn_ans1.setChecked(False)  
-    btn_ans2.setChecked(False)      
-    btn_ans3.setChecked(False)     
-    btn_ans4.setChecked(False)   
-    RadioGroup.setExclusive(True)       
-btn_ans.clicked.connect(show_res)
