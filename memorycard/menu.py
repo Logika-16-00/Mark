@@ -1,5 +1,5 @@
 from app import *
-from PyQt5.QtWidgets import QPushButton, QLineEdit, QFormLayout, QListView, QWidget, QHBoxLayout, QVBoxLayout
+from PyQt5.QtWidgets import QPushButton, QLineEdit, QFormLayout, QListWidget, QWidget, QHBoxLayout, QVBoxLayout
 from PyQt5.QtCore import Qt
 
 line_ans = QLineEdit("")
@@ -18,7 +18,7 @@ form.addRow("Введіть неправильний варіант №3:",line_
 
 #головне вікно де є список запитань і кнопки
 
-list_q = QListView()
+list_q = QListWidget()
 
 btn_add = QPushButton("Додати запитання")
 btn_clear = QPushButton("Очистити запитання")
@@ -33,11 +33,10 @@ line1.addWidget(btn_add)
 line2 = QVBoxLayout()
 line2.addWidget(wdgt_edit)
 line2.addWidget(btn_clear)
+line2.addWidget(btn_back, stretch=2)
+
 line3 = QHBoxLayout()
 line3.addLayout(line1)
 line3.addLayout(line2)
-line4 = QHBoxLayout()
-line4.addWidget(btn_back, stretch=2)
 main_menu_line = QHBoxLayout()
 main_menu_line.addLayout(line3)
-main_menu_line.addLayout(line4)

@@ -1,6 +1,7 @@
 from app import App
 from PyQt5.QtWidgets import QWidget
 from card import *
+from data import *
 
 from menu import *
 

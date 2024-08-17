@@ -48,8 +48,11 @@ AnswersGroupBox.setLayout(mainline_btn_ans)
 
 main_line = QVBoxLayout()
 main_line.addLayout(layout1)
-main_line.addWidget(lb_ans)
-main_line.addWidget(AnswersGroupBox)
+main_line.addStretch(1)
+
+main_line.addWidget(lb_ans,alignment=Qt.AlignCenter)
+main_line.addStretch(1)
+main_line.addWidget(AnswersGroupBox,stretch=5)
 
 ResGroupBox = QGroupBox("Результат:")
 lb_res = QLabel("Правильність")
@@ -67,4 +70,15 @@ def show_res():
         AnswersGroupBox.hide()
         ResGroupBox.show()
         btn_ans.setText("Наступне запитання")
+        
+def show_ans():
+    AnswersGroupBox.show()
+    ResGroupBox.hide()
+    btn_ans.setText('Відповісти')
+    RadioGroup.setExclusive(False)
+    btn_ans1.setChecked(False)  
+    btn_ans2.setChecked(False)      
+    btn_ans3.setChecked(False)     
+    btn_ans4.setChecked(False)   
+    RadioGroup.setExclusive(True)       
 btn_ans.clicked.connect(show_res)
