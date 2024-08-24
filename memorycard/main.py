@@ -78,6 +78,7 @@ def add():
 btn_add.clicked.connect(add)
 
 def show_q():
+    global q
     q = choice(form_list)
     lb_ans.setText(q.name)
     answers = [q.correct, q.wrong1, q.wrong2, q.wrong3]
@@ -94,6 +95,16 @@ def show_res():
         AnswersGroupBox.hide()
         ResGroupBox.show()
         btn_ans.setText("Наступне запитання")
+
+        selected_button = RadioGroup.checkedButton()
+        if selected_button:
+            if q.check(selected_button.text()):
+                lb_res.setText("Ви правильно відповіли!")
+                lb_correct.setText(q.correct)
+            else:
+                lb_res.setText("Ви неправильно відповіли!")
+                lb_correct.setText(q.correct)
+                            
     else:
         show_ans()
         show_q()

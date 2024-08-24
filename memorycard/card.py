@@ -12,11 +12,18 @@ btn_menu = QPushButton("Меню")
 btn_ans = QPushButton("Відповісти")
 lb_ans = QLabel("Запитання")
 
+lb_ans.setStyleSheet("font-size: 20px; font-family: monospace; font-weight: bold;")
+
 
 btn_ans1 = QRadioButton("1")
 btn_ans2 = QRadioButton("2")
 btn_ans3 = QRadioButton("3")
 btn_ans4 = QRadioButton("4")
+
+btn_ans1.setStyleSheet("font-size: 16px;  font-family: tahoma")
+btn_ans2.setStyleSheet("font-size: 16px;  font-family: tahoma")
+btn_ans3.setStyleSheet("font-size: 16px;  font-family: tahoma")
+btn_ans4.setStyleSheet("font-size: 16px;  font-family: tahoma")
 
 AnswersGroupBox = QGroupBox("Варіанти відповідей")
 
