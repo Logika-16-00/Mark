@@ -82,7 +82,7 @@ class Ui_MainWindow(object):
 "    text-decoration: none;\n"
 "    color: white;\n"
 "    background: #0B63F6;\n"
-"    box-shadow: 0 5px 0 #003CC5;")
+ )
         self.btn_delete.setObjectName("btn_delete")
         self.btn_save = QtWidgets.QPushButton(self.centralwidget)
         self.btn_save.setGeometry(QtCore.QRect(600, 290, 321, 31))
@@ -91,7 +91,7 @@ class Ui_MainWindow(object):
 "    text-decoration: none;\n"
 "    color: white;\n"
 "    background: #0B63F6;\n"
-"    box-shadow: 0 5px 0 #003CC5;")
+ )
         self.btn_save.setObjectName("btn_save")
         self.btn_add = QtWidgets.QPushButton(self.centralwidget)
         self.btn_add.setGeometry(QtCore.QRect(600, 570, 141, 31))
@@ -100,7 +100,7 @@ class Ui_MainWindow(object):
 "    text-decoration: none;\n"
 "    color: white;\n"
 "    background: #0B63F6;\n"
-"    box-shadow: 0 5px 0 #003CC5;")
+ )
         self.btn_add.setObjectName("btn_add")
         self.btn_search = QtWidgets.QPushButton(self.centralwidget)
         self.btn_search.setGeometry(QtCore.QRect(600, 610, 321, 31))
@@ -109,7 +109,7 @@ class Ui_MainWindow(object):
 "    text-decoration: none;\n"
 "    color: white;\n"
 "    background: #0B63F6;\n"
-"    box-shadow: 0 5px 0 #003CC5;")
+ )
         self.btn_search.setObjectName("btn_search")
         self.btn_detach = QtWidgets.QPushButton(self.centralwidget)
         self.btn_detach.setGeometry(QtCore.QRect(770, 570, 151, 31))
@@ -118,7 +118,7 @@ class Ui_MainWindow(object):
 "    text-decoration: none;\n"
 "    color: white;\n"
 "    background: #0B63F6;\n"
-"    box-shadow: 0 5px 0 #003CC5;")
+ )
         self.btn_detach.setObjectName("btn_detach")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(600, 330, 311, 31))
