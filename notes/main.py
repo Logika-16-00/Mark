@@ -15,6 +15,8 @@ class Widget(QMainWindow):
             self.ui.list_1.addItem(note)
         self.ui.btn_save.clicked.connect(self.save_note)
         self.ui.btn_add.clicked.connect(self.add_tag)
+        self.ui.btn_delete.clicked.connect(self.delete_notes)
+        self.ui.btn_detach.clicked.connect(self.delete_tags)
 
     
     def show_note(self, item):
@@ -33,9 +35,26 @@ class Widget(QMainWindow):
     def add_tag(self):
         if self.ui.list_1.currentItem():
             tag_name,ok =QInputDialog.getText(self, "Додати тег", "Введіть тег")
+            note_name = self.ui.list_1.currentItem().text()
             if tag_name and ok:
                 key = self.ui.list_1.currentItem().text()
                 notes[key]["теги"].append(tag_name)
+                self.ui.list_2.addItem(tag_name)
+        self.write_to_file()
+
+    def delete_notes(self):
+        if self.ui.list_1.currentItem():
+            note_name = self.ui.list_1.currentItem().text()
+            del notes[note_name]
+            self.ui.list_1.takeItem(self.ui.list_1.currentRow())
+        self.write_to_file()
+
+    def delete_tags(self):
+        if self.ui.list_1.currentItem() and self.ui.list_2.currentItem():
+            note_name = self.ui.list_1.currentItem().text()
+            tag_name = self.ui.list_2.currentItem().text()
+            self.ui.list_2.takeItem(self.ui.list_1.currentRow())
+            notes[note_name]["теги"].remove(tag_name)
         self.write_to_file()
 
     def add_note(self):
