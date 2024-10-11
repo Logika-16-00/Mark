@@ -49,6 +49,9 @@ class Widget(QMainWindow):
         self.write_to_file()
 
     def delete_notes(self):
+        self.ui.list_2.clear()
+        self.ui.textEdit_2.clear()
+
         if self.ui.list_1.currentItem():
             note_name = self.ui.list_1.currentItem().text()
             del notes[note_name]
