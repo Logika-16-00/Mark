@@ -1,3 +1,4 @@
+from PyQt5.QtCore import QEvent
 from PyQt5.QtWidgets import QApplication,QInputDialog
 from PyQt5.QtWidgets import QMainWindow
 from notes import Ui_MainWindow
@@ -17,6 +18,8 @@ class Widget(QMainWindow):
         self.ui.btn_add.clicked.connect(self.add_tag)
         self.ui.btn_delete.clicked.connect(self.delete_notes)
         self.ui.btn_detach.clicked.connect(self.delete_tags)
+        self.ui.pushButton.clicked.connect(self.change_theme)
+        self.is_dark_theme = False
 
     
     def show_note(self, item):
@@ -68,7 +71,16 @@ class Widget(QMainWindow):
     def write_to_file(self):
         with open("notes/notes.json","w", encoding="utf-8") as file:
             json.dump(notes, file,ensure_ascii=False) 
-        
+    def change_theme(self):
+        self.is_dark_theme = not self.is_dark_theme
+        if self.is_dark_theme:
+            self.ui.btn_save.setStyleSheet(" color: black;")
+            
+        else:
+            self.ui.btn_save.setStyleSheet(" color: red;")
+
+            
+
 with open("notes/notes.json","r", encoding ="utf-8") as file:
     notes = json.load(file)
 print(notes)

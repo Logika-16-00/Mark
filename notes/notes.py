@@ -81,8 +81,7 @@ class Ui_MainWindow(object):
 "    border-radius: 10px;\n"
 "    text-decoration: none;\n"
 "    color: white;\n"
-"    background: #0B63F6;\n"
-"    box-shadow: 0 5px 0 #003CC5;")
+"    background: #0B63F6;\n")
         self.btn_delete.setObjectName("btn_delete")
         self.btn_save = QtWidgets.QPushButton(self.centralwidget)
         self.btn_save.setGeometry(QtCore.QRect(600, 290, 321, 31))
