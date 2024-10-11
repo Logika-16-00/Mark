@@ -1,6 +1,7 @@
 from PyQt5.QtCore import QEvent
 from PyQt5.QtWidgets import QApplication,QInputDialog
 from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtGui import QIcon
 from notes import Ui_MainWindow
 import json
 
@@ -20,6 +21,8 @@ class Widget(QMainWindow):
         self.ui.btn_detach.clicked.connect(self.delete_tags)
         self.ui.pushButton.clicked.connect(self.change_theme)
         self.is_dark_theme = False
+        self.setWindowTitle("Smart Notes")
+        self.setWindowIcon(QIcon("notes/icon_notes.png"))
 
     
     def show_note(self, item):
@@ -71,13 +74,36 @@ class Widget(QMainWindow):
     def write_to_file(self):
         with open("notes/notes.json","w", encoding="utf-8") as file:
             json.dump(notes, file,ensure_ascii=False) 
+
+
     def change_theme(self):
+        btn_list = [self.ui.btn_save,self.ui.btn_detach,self.ui.btn_delete,self.ui.btn_add,self.ui.btn_make,self.ui.btn_search]
         self.is_dark_theme = not self.is_dark_theme
         if self.is_dark_theme:
-            self.ui.btn_save.setStyleSheet(" color: black;")
+            for btn in btn_list:
+                btn.setStyleSheet("border: none;\n"
+    "    border-radius: 10px;\n"
+    "    text-decoration: none;\n"
+    "    color: black;\n"
+    "    background: #FFFF33;\n"
+    "    box-shadow: 0 5px 0 #003CC5;")
+
+            self.setStyleSheet("background: #808080;")
+            self.ui.label_2.setStyleSheet("color: white;")
+            self.ui.label.setStyleSheet("color: white;")
+
             
         else:
-            self.ui.btn_save.setStyleSheet(" color: red;")
+            for btn in btn_list:
+                btn.setStyleSheet("border: none;\n"
+    "    border-radius: 10px;\n"
+    "    text-decoration: none;\n"
+    "    color: white;\n"
+    "    background: #0B63F6;\n"
+    "    box-shadow: 0 5px 0 #003CC5;")
+            self.setStyleSheet("background: 444;")
+            self.ui.label.setStyleSheet("color: black;")
+            self.ui.label_2.setStyleSheet("color: black;")
 
             
 
