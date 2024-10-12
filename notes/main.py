@@ -84,47 +84,93 @@ class Widget(QMainWindow):
         self.is_dark_theme = not self.is_dark_theme
         if self.is_dark_theme:
             for btn in btn_list:
-                btn.setStyleSheet("""
-                    QPushButton {
-                        border: none;
-                        border-radius: 10px;
-                        text-decoration: none;
-                        color: black;
-                        background: #FFFF33;
-                        box-shadow: 0 5px 0 #003CC5;
-                        }
-                QPushButton:hover {
-                        background-color: #E0E0E0;
-                        color: #000000;
-                }
-                """)
+                btn.setStyleSheet("border: none;\n"
+    "    border-radius: 10px;\n"
+    "    text-decoration: none;\n"
+    "    color: black;\n"
+    "    background: #FFFF33;\n"
+    "    box-shadow: 0 5px 0 #003CC5;")
 
             self.setStyleSheet("background: #808080;")
             self.ui.label_2.setStyleSheet("color: white;")
             self.ui.label.setStyleSheet("color: white;")
+            self.ui.textEdit_2.setStyleSheet("border: 5px;\n"
+"border-color: rgb(0, 0, 0);\n"
+"border-radius: 10px;\n"
+"text-decoration: none;\n"
+"color: black;\n"
+"background: #FFF6C0;\n"
+"box-shadow: 0 5px 0 #003CC5;\n"
+"")
+            self.ui.list_1.setStyleSheet("border: 5px;\n"
+"border-color: rgb(0, 0, 0);\n"
+"border-radius: 10px;\n"
+"text-decoration: none;\n"
+"color: black;\n"
+"background: #FFF6C0;\n"
+"box-shadow: 0 5px 0 #003CC5;\n"
+"")
+            self.ui.list_2.setStyleSheet("border: 5px;\n"
+"border-color: rgb(0, 0, 0);\n"
+"border-radius: 10px;\n"
+"text-decoration: none;\n"
+"color: black;\n"
+"background: #FFF6C0;\n"
+"box-shadow: 0 5px 0 #003CC5;\n"
+"")
+            self.ui.lineEdit.setStyleSheet("border: 5px;\n"
+"border-color: rgb(0, 0, 0);\n"
+"border-radius: 3px;\n"
+"text-decoration: none;\n"
+"color: black;\n"
+"background: #FFF6C0;\n"
+"box-shadow: 0 5px 0 #003CC5;\n"
+"")
 
             
         else:
             for btn in btn_list:
-                
-
-                btn.setStyleSheet("""
-                    QPushButton {
-                        border: none;
-                        border-radius: 10px;
-                        text-decoration: none;
-                        color: white;
-                        background: #0B63F6;
-                        box-shadow: 0 5px 0 #003CC5;
-                        }
-                QPushButton:hover {
-                        background-color: red;
-                        color: #000000;
-                }
-                """)
+                btn.setStyleSheet("border: none;\n"
+    "    border-radius: 10px;\n"
+    "    text-decoration: none;\n"
+    "    color: white;\n"
+    "    background: #0B63F6;\n"
+    "    box-shadow: 0 5px 0 #003CC5;")
             self.setStyleSheet("background: 444;")
             self.ui.label.setStyleSheet("color: black;")
             self.ui.label_2.setStyleSheet("color: black;")
+            self.ui.textEdit_2.setStyleSheet("border: 5px;\n"
+            "border-color: rgb(0, 0, 0);\n"
+"border-radius: 10px;\n"
+"text-decoration: none;\n"
+"color: black;\n"
+"background: white;\n"
+"box-shadow: 0 5px 0 #003CC5;\n"
+"")
+            self.ui.list_1.setStyleSheet("border: 5px;\n"
+"border-color: rgb(0, 0, 0);\n"
+"border-radius: 10px;\n"
+"text-decoration: none;\n"
+"color: black;\n"
+"background: white;\n"
+"box-shadow: 0 5px 0 #003CC5;\n"
+"")
+            self.ui.list_2.setStyleSheet("border: 5px;\n"
+"border-color: rgb(0, 0, 0);\n"
+"border-radius: 10px;\n"
+"text-decoration: none;\n"
+"color: black;\n"
+"background: white;\n"
+"box-shadow: 0 5px 0 #003CC5;\n"
+"")
+            self.ui.lineEdit.setStyleSheet("border: 5px;\n"
+"border-color: rgb(0, 0, 0);\n"
+"border-radius: 3px;\n"
+"text-decoration: none;\n"
+"color: black;\n"
+"background: white;\n"
+"box-shadow: 0 5px 0 #003CC5;\n"
+"")
 
             
 

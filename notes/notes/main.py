@@ -20,6 +20,8 @@ class Widget(QMainWindow):
         self.ui.btn_delete.clicked.connect(self.delete_notes)
         self.ui.btn_detach.clicked.connect(self.delete_tags)
         self.ui.pushButton.clicked.connect(self.change_theme)
+        self.ui.btn_search.clicked.connect(self.search_notes)
+        self.ui.lineEdit.textChanged.connect(self.search_notes)
         self.is_dark_theme = False
         self.setWindowTitle("Smart Notes")
         self.setWindowIcon(QIcon("notes/icon_notes.png"))
@@ -81,12 +83,22 @@ class Widget(QMainWindow):
         self.is_dark_theme = not self.is_dark_theme
         if self.is_dark_theme:
             for btn in btn_list:
-                btn.setStyleSheet("border: none;\n"
-    "    border-radius: 10px;\n"
-    "    text-decoration: none;\n"
-    "    color: black;\n"
-    "    background: #FFFF33;\n"
-    "    box-shadow: 0 5px 0 #003CC5;")
+                btn.setStyleSheet("""
+                    QPushButton {
+                        border: none;
+                        border-radius: 10px;
+                        text-decoration: none;
+                        color: black;
+                        background: #FFFF33;
+                        box-shadow: 0 5px 0 #003CC5;
+                        }
+                QPushButton:hover {
+                        background-color: #0B63F6;
+                        color: #000000;
+                        font-weight: bold;
+                        font-style: sans-serif;
+                }
+                """)
 
             self.setStyleSheet("background: #808080;")
             self.ui.label_2.setStyleSheet("color: white;")
@@ -127,12 +139,22 @@ class Widget(QMainWindow):
             
         else:
             for btn in btn_list:
-                btn.setStyleSheet("border: none;\n"
-    "    border-radius: 10px;\n"
-    "    text-decoration: none;\n"
-    "    color: white;\n"
-    "    background: #0B63F6;\n"
-    "    box-shadow: 0 5px 0 #003CC5;")
+                btn.setStyleSheet("""
+                    QPushButton {
+                        border: none;
+                        border-radius: 10px;
+                        text-decoration: none;
+                        color: white;
+                        background: #0B63F6;
+                        box-shadow: 0 5px 0 #003CC5;
+                        }
+                QPushButton:hover {
+                        background-color: #FFFF33;
+                        color: #000000;
+                        font-weight: bold;
+                        font-style: sans-serif;
+                }
+                """)
             self.setStyleSheet("background: 444;")
             self.ui.label.setStyleSheet("color: black;")
             self.ui.label_2.setStyleSheet("color: black;")
@@ -168,6 +190,18 @@ class Widget(QMainWindow):
 "background: white;\n"
 "box-shadow: 0 5px 0 #003CC5;\n"
 "")
+    def search_notes(self):
+            search_tag = self.ui.lineEdit.text().strip().lower()
+            self.ui.list_1.clear()
+            if not search_tag:
+                for note in notes.keys():
+                    self.ui.list_1.addItem(note)            
+                return
+
+            for note_name in notes.keys():
+                if search_tag in notes[note_name]["теги"]:
+                        self.ui.list_1.addItem(note_name)
+                self.ui.list_2.clear()
 
             
 
