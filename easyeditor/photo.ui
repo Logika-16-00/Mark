@@ -173,6 +173,24 @@ font-weight: bold;</string>
      <string>Made by Mark @2024</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btn_save">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>20</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:#FFB621;
+border-radius:10px;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>Зберегти</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -180,7 +198,7 @@ font-weight: bold;</string>
      <x>0</x>
      <y>0</y>
      <width>807</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
