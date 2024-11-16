@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtCore import QUrl
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtWidgets import QApplication
-from PyQt5.QtWidgets import QMainWindow, QFileDialog
+from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox
 from PyQt5.QtGui import QIcon, QPixmap, QImage 
 from ui import Ui_MainWindow
 from PIL import Image
@@ -28,6 +28,7 @@ class Widget(QMainWindow):
         self.ui.btn_sharp.clicked.connect(self.sharpen_image)
         self.ui.btn_dir.clicked.connect(self.show_files)
         self.ui.listWidget.itemClicked.connect(self.show_pictures)
+        self.ui.btn_save.clicked.connect(self.save_image)
         url = QUrl.fromLocalFile("among-us-role-reveal-sound.wav")  
         content = QMediaContent(url)
         self.media_player.setMedia(content)
@@ -76,22 +77,27 @@ class Widget(QMainWindow):
     
     def rotate_left(self):
         self.image = self.image.rotate(90)
-        self.update_image()
+        self.image.save("copy.png")
+        self.update_image("copy.png")
     def rotate_right(self):
         self.image = self.image.rotate(-90)
-        self.update_image()
+        self.image.save("copy.png")
+        self.update_image("copy.png")
     
     def flip_image(self):
         self.image = self.image.transpose(Image.FLIP_LEFT_RIGHT)
-        self.update_image()
+        self.image.save("copy.png")
+        self.update_image("copy.png")
 
     def bw_image(self):
         self.image = self.image.convert("L")
-        self.update_image()
+        self.image.save("copy.png")
+        self.update_image("copy.png")
 
     def sharpen_image(self):
         self.image = self.image.filter(ImageFilter.SHARPEN)
-        self.update_image()
+        self.image.save("copy.png")
+        self.update_image("copy.png")
 
 
     def choose_dir(self):
@@ -127,6 +133,16 @@ class Widget(QMainWindow):
             self.image = Image.open(path)
             self.update_image(path)
 
+    def save_image(self):
+        if self.image:
+            save_path, _ =  QFileDialog.getSaveFileName(self, "Зберегти файл",  workdir, "Images (*.png *.jpg *.jpeg *.bmp *.gif)")
+            if save_path:
+                self.image.save(save_path)
+                QMessageBox.information(self, "Успіх", "Зображення успішно збережено!")
+            else:
+                QMessageBox.warning(self, "Увага", "Файл для зображення не вибрано.")
+        else:
+            QMessageBox.warning(self, "Увага", "Немає зображення для збереження.")
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
