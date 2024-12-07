@@ -37,7 +37,7 @@ class Widget(QMainWindow):
         self.ui.label_2.enterEvent = self.label_2_enter_event
         self.ui.label_2.leaveEvent = self.label_2_leave_event
 
-        btn_list = [self.ui.btn_left, self.ui.btn_right, self.ui.btn_flip, self.ui.btn_bw, self.ui.btn_dir, self.ui.btn_sharp, self.ui.label, self.ui.listWidget]
+        btn_list = [self.ui.btn_left, self.ui.btn_right, self.ui.btn_flip, self.ui.btn_bw, self.ui.btn_dir, self.ui.btn_sharp, self.ui.label, self.ui.listWidget, self.ui.btn_save]
         for btn in btn_list:
             btn.setStyleSheet("""
                 QListWidget {
@@ -127,7 +127,7 @@ class Widget(QMainWindow):
                 self.ui.listWidget.addItem(file)
 
     def show_pictures(self):
-        if self.ui.listWidget.currentRow()>0:
+        if self.ui.listWidget.currentRow()>=0:
             name = self.ui.listWidget.currentItem().text()
             path = os.path.join(workdir, name)
             self.image = Image.open(path)
