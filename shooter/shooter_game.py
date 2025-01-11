@@ -11,7 +11,6 @@ finish = False
 fps = 60
 clock = time.Clock()
 
-
 mixer.init()
 mixer.music.load("space.ogg")
 mixer.music.play()
@@ -23,6 +22,7 @@ lose =  0
 catch = 0
 label_lose = font1.render(f"Пропущено {lose}", True, (190,5,9))
 label_catch = font1.render(f"Збито {lose}", True, (13,193,11))
+
 
 class Player(sprite.Sprite):
     def __init__(self, image_player,x,y,size_x,size_y,life,speed):
@@ -73,6 +73,12 @@ monsters = sprite.Group()
 for i in range(5):
     enemy = Enemy("ufo.png", randint(0,650), 0,90,60,randint(1,5),randint(1,5))
     monsters.add(enemy)
+
+asteroids = sprite.Group()
+for i in range(3):
+    asteroid = Enemy("asteroid.png", randint(0,650), 0,80,80,1,randint(2,8))
+    asteroids.add(asteroid)
+level_boss = 0
 game = 1
 while game:
     for e in event.get():
@@ -93,9 +99,38 @@ while game:
         monsters.update()
         bullets.draw(wn)
         bullets.update()
+        asteroids.draw(wn)
+        asteroids.update()
         wn.blit(label_catch, (10,10))
         wn.blit(label_lose, (10,45))
 
+        if lose >= 10:
+            finish = True
+            label_lose = font2.render("Кінець гри!", True,(193,17,11))
+            wn.blit(fon,(0,0))
+            wn.blit(label_lose, (190,200))
+        if catch >= 10:
+            finish = True
+            # level_boss = True
+            label_win = font2.render("виграв!", True,(193,17,11))
+            wn.blit(fon,(0,0))
+            wn.blit(label_win, (190,200))
+        if level_boss:
+            wn.blit(fon,(0,0))
+            rocket.move()
+            rocket.show()
+            bullets.draw(wn)
+            bullets.update()
+        colides = sprite.groupcollide(monsters, bullets, True, True)
+        for c in colides:
+            catch += 1
+            enemy = Enemy("ufo.png", randint(0,650), 0,90,60,randint(1,5),randint(1,5))
+            monsters.add(enemy)
+        colides_a = sprite.groupcollide(asteroids, bullets, True, True)
+        for c in colides_a:
+            catch += 1
+            asteroid = Enemy("asteroid.png", randint(0,650), 0,80,80,1,randint(2,8))
+            asteroids.add(asteroid)
     display.update()
     clock.tick(fps)
 
