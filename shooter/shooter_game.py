@@ -143,6 +143,8 @@ while game:
         if catch >= 10 :
             finish = True
             level_boss = True
+            for a in monsters:
+                a.kill()
             
         if rel_time:
             if timer() - rel_timer > 3:
