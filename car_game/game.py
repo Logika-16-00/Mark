@@ -40,7 +40,7 @@ class Player(sprite.Sprite):
             if keys[K_d]:
                 self.rect.x += self.speed
 
-car_main = Player("car_red.png",500,475,100,100,3,3)
+car_main = Player("car_red.png",500,470,100,100,3,3)
 while game:
     wn.blit(fon,(0,0))
     for e in event.get():
