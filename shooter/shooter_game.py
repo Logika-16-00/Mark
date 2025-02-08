@@ -124,7 +124,7 @@ while game:
         asteroids.update()
         bullets.draw(wn)
         bullets.update()
-        wn.blit(label_catch,(10,10))
+        wn.blit(label_catch,(10,10))    
         wn.blit(label_lose,(10,45))
         
         colides = sprite.groupcollide(monsters,bullets,True,True)
