@@ -7,10 +7,11 @@ wn = display.set_mode((1000, 600))
 display.set_caption("Race")
 
 fon = transform.scale(image.load("road.png"), (1000, 600))
-play_again_img = transform.scale(image.load("play_again.png"), (250, 100))  # Завантажуємо картинку "play_again.png"
-start_game_img = transform.scale(image.load("start_game.png"), (400, 200))  # Завантажуємо картинку "start_game.png"
-exit_game_img = transform.scale(image.load("exit_game.png"), (275, 150))    # Завантажуємо картинку "exit_game.png"
-FPS = 120
+play_again_img = transform.scale(image.load("play_again.png"), (250, 100))  
+start_game_img = transform.scale(image.load("start_game.png"), (400, 200))  
+exit_game_img = transform.scale(image.load("exit_game.png"), (275, 150))    
+you_win_img = transform.scale(image.load("you_win.png"), (250,100))
+game_over_img = transform.scale(image.load("game_over.png"), (250,200))
 game = 1
 clock = time.Clock()
 
@@ -22,6 +23,7 @@ font.init()
 font1 = font.Font(None, 50)
 font2 = font.Font(None, 50)
 font3 = font.Font(None, 50)
+font4 = font.Font(None,60)
 
 lose = 0
 catch = 0
@@ -144,6 +146,7 @@ while game:
             wn.blit(label_win, (10, 80))
             crash_sound.play()
             finish = 1
+            lose_game = 1
 
         if sprite.spritecollide(car_main, car_w, False):
             label_win = font3.render("Кінець гри!", True, (193, 17, 11))
@@ -153,14 +156,14 @@ while game:
             lose_game = 1
         car_main.move()
 
-    if lose == 10:
-        label_winning = font2.render("Перемога", True, (13, 197, 11))
-        wn.blit(label_winning, (400, 200))
+    if lose == 1:
+        label_winning = font4.render("Перемога", True, (1,1,1))
+        wn.blit(you_win_img, (395, 100))
+        
         finish = 1
 
     if lose_game == 1:
-        label_win = font3.render("Кінець гри!", True, (193, 17, 11))
-        wn.blit(label_win, (10, 80))
+      wn.blit(game_over_img, (395,100))
 
     if finish:
         wn.blit(play_again_img, (400, 250))  # Відображаємо картинку "play_again.png"
@@ -169,5 +172,5 @@ while game:
     wn.blit(label_lose, (10, 45))
 
     car_main.show()
-    clock.tick(FPS)
+    clock.tick(120)
     display.update()
