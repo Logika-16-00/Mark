@@ -8,6 +8,8 @@ display.set_caption("Race")
 
 fon = transform.scale(image.load("road.png"), (1000, 600))
 play_again_img = transform.scale(image.load("play_again.png"), (250, 100))  # Завантажуємо картинку "play_again.png"
+start_game_img = transform.scale(image.load("start_game.png"), (400, 200))  # Завантажуємо картинку "start_game.png"
+exit_game_img = transform.scale(image.load("exit_game.png"), (275, 150))    # Завантажуємо картинку "exit_game.png"
 FPS = 120
 game = 1
 clock = time.Clock()
@@ -87,9 +89,36 @@ def reset_game():
     for enemy in car_y:
         enemy.rect.y = -10
         enemy.rect.x = random.choice(random_x)
+        enemy.speed = randint(3, 8)
     for car in car_w:
         car.rect.y = -10
         car.rect.x = random.choice(random_x)
+        car.speed = randint(3, 8)
+
+# Відображення стартового екрану
+def show_start_screen():
+    wn.blit(fon, (0, 0))
+    wn.blit(start_game_img, (300, 100))  # Відображаємо картинку "start_game.png" посередині екрану
+    wn.blit(exit_game_img, (350, 350))  # Відображаємо картинку "exit_game.png" під кнопкою "start_game.png"
+    display.update()
+    waiting = True
+    while waiting:
+        for e in event.get():
+            if e.type == QUIT:
+                return False
+            if e.type == MOUSEBUTTONDOWN and e.button == 1:  # Перевіряємо клік мишею
+                x, y = e.pos
+                # Перевіряємо, чи клік був у межах зображення кнопки "start_game.png"
+                if 300 <= x <= 700 and 100 <= y <= 300:
+                    return True
+                # Перевіряємо, чи клік був у межах зображення кнопки "exit_game.png"
+                if 300 <= x <= 700 and 350 <= y <= 550:
+                    return False
+    return False
+
+# Показуємо стартовий екран
+if not show_start_screen():
+    game = 0
 
 while game:
     wn.blit(fon, (0, 0))
@@ -134,7 +163,7 @@ while game:
         wn.blit(label_win, (10, 80))
 
     if finish:
-        wn.blit(play_again_img, (400, 250))  # Відображаємо картинку "play_again.png" посередині екрану
+        wn.blit(play_again_img, (400, 250))  # Відображаємо картинку "play_again.png"
 
     wn.blit(label_catch, (10, 10))
     wn.blit(label_lose, (10, 45))
